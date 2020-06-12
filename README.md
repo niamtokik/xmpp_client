@@ -10,6 +10,18 @@
 rebar3 compile
 ```
 
+## Goal
+
+ * Document XMPP library
+   * Implementing new XEP
+   * Create specification
+   * Create module and functions documentation
+   
+ * Create XMPP client
+   * easy to configure
+   * easy to deploy
+   * easy to use
+
 ## Design
 
 TODO
