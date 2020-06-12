@@ -1,0 +1,14 @@
+{application, xmpp_client,
+ [{description, "A pure Erlang XMPP client"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {xmpp_client_app, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.
