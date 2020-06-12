@@ -12,8 +12,10 @@ all() ->
     [connect_tcp, connect_ssl].
 
 init_per_suite(Config) ->
-    {ok, Pid} = application:start(xmpp_client),
-    [{pid, Pid}|Config].
+    application:ensure_all_started(xmpp_client),    
+    Server = os:getenv("XMPP_SERVER"),
+    Port = os:getenv("XMPP_PORT"),
+    [{server, Server},{port, Port}|Config].
 
 end_per_suite(_Config) ->
     application:stop(xmpp_client),
@@ -35,7 +37,10 @@ end_per_testcase(_Case, Config) ->
 %% @doc create a connection reference to a tcp end-point.
 %%--------------------------------------------------------------------
 connect_tcp(Config) ->
-    {skip, "todo"}.
+    Server = proplists:get_value(server, Config),
+    Port = proplists:get_value(port, Config),
+    {ok, Pid} = xmpp_client_worker:start_link([{url, Server}, {port, Port}]),
+    ok.
 
 %%--------------------------------------------------------------------
 %% @doc create a connection reference to ssl/tls end-point.

@@ -1,0 +1,1 @@
+-include_lib("xmpp/include/xmpp.hrl").
